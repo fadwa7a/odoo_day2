@@ -1,0 +1,56 @@
+ <odoo>
+    <record id="custom_department_tree_view" model="ir.ui.view">
+            <field name="name">custom_department_tree_view</field>
+            <field name="model">custom.hms.department</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="department_name"/>
+                    <field name="capacity"/>
+                    <field name="is_open"/>
+                </tree>
+            </field>
+    </record>
+
+    <record id="custom_department_form_view" model="ir.ui.view">
+        <field name="name">custom_department_form_view</field>
+        <field name="model">custom.hms.department</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group string="General Information">
+                            <field name="department_name"/>
+                            <field name="capacity"/>
+                            <field name="is_open"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Patients">
+                            <field name="patient_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="custom_department_search_view" model="ir.ui.view">
+        <field name="name">custom_department_search_view</field>
+        <field name="model">custom.hms.department</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="department_name"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="custom_hms_department_action" model="ir.actions.act_window">
+        <field name="name">Custom Departments</field>
+        <field name="res_model">custom.hms.department</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_all_custom_departments"
+              name="Custom Departments"
+              parent="menu_root_department"
+              action="custom_hms_department_action"/>
+</odoo>

@@ -1,0 +1,72 @@
+ <odoo>
+    <record id="custom_patient_tree_view" model="ir.ui.view">
+            <field name="name">custom_patient_tree_view</field>
+            <field name="model">custom.hms.patient</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="first_name"/>
+                    <field name="last_name"/>
+                    <field name="birth_date"/>
+                    <field name="blood_group"/>
+                    <field name="address"/>
+                    <field name="age"/>
+                    <field name="status"/>
+                    <field name="department"/>
+                    <field name="attending_doctor"/>
+                    <field name="department_capacity"/>
+                </tree>
+            </field>
+    </record>
+
+    <record id="custom_patient_form_view" model="ir.ui.view">
+        <field name="name">custom_patient_form_view</field>
+        <field name="model">custom.hms.patient</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group string="General Information">
+                            <field name="first_name"/>
+                            <field name="last_name"/>
+                            <field name="birth_date"/>
+                            <field name="blood_group"/>
+                            <field name="department"/>
+                            <field name="attending_doctor"/>
+                        </group>
+                        <group string="Additional Information">
+                            <field name="medical_history"/>
+                            <field name="cr_ratio"/>
+                            <field name="pcr"/>
+                            <field name="image"/>
+                            <field name="address"/>
+                            <field name="age"/>
+                            <field name="status"/>
+                            <field name="department_capacity"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="custom_patient_search_view" model="ir.ui.view">
+        <field name="name">custom_patient_search_view</field>
+        <field name="model">custom.hms.patient</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="first_name"/>
+                <field name="blood_group"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="custom_hms_patient_action" model="ir.actions.act_window">
+        <field name="name">Custom Patients</field>
+        <field name="res_model">custom.hms.patient</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_all_custom_patients"
+              name="Custom Patients"
+              parent="menu_root_patient"
+              action="custom_hms_patient_action"/>
+</odoo>

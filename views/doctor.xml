@@ -1,0 +1,50 @@
+ <odoo>
+    <record id="custom_doctor_tree_view" model="ir.ui.view">
+            <field name="name">custom_doctor_tree_view</field>
+            <field name="model">custom.hms.doctor</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="first_name"/>
+                    <field name="last_name"/>
+                </tree>
+            </field>
+    </record>
+
+    <record id="custom_doctor_form_view" model="ir.ui.view">
+        <field name="name">custom_doctor_form_view</field>
+        <field name="model">custom.hms.doctor</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group string="General Information">
+                            <field name="first_name"/>
+                            <field name="last_name"/>
+                            <field name="image"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="custom_doctor_search_view" model="ir.ui.view">
+        <field name="name">custom_doctor_search_view</field>
+        <field name="model">custom.hms.doctor</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="first_name"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="custom_hms_doctor_action" model="ir.actions.act_window">
+        <field name="name">Custom Doctors</field>
+        <field name="res_model">custom.hms.doctor</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_all_custom_doctors"
+              name="Custom Doctors"
+              parent="menu_root_doctor"
+              action="custom_hms_doctor_action"/>
+</odoo>
